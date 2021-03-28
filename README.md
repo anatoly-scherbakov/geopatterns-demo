@@ -1,5 +1,5 @@
-# Introduction to Serverless Computing | Barnaul Python Conf | 22 Apr 2021
-
+# Введение в бессерверные вычисления | Barnaul Python Conf | 22 Apr 2021
 ---
 
+Вашему вниманию предлагаются материалы к докладу, включая презентацию и готовый к выполнению исходный код.
 

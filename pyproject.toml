@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "serverless-computing-intro"
+version = "0.0.1"
+description = "A talk for Barnaul Python Conf 2021."
+authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.9"
+sympy = "^1.7.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
