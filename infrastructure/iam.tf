@@ -17,7 +17,10 @@ data aws_iam_policy_document lambda {
     effect = "Allow"
     sid    = ""
   }
+}
 
+
+data aws_iam_policy_document lambda-access-to-s3 {
   statement {
     # Allow the Lambda function to access files on our S3 bucket.
     effect = "Allow"
@@ -32,6 +35,18 @@ data aws_iam_policy_document lambda {
       "${aws_s3_bucket.images.arn}/*",
     ]
   }
+}
+
+
+resource aws_iam_policy lambda-access-to-s3 {
+  policy = data.aws_iam_policy_document.lambda-access-to-s3.json
+}
+
+
+resource aws_iam_policy_attachment lambda-access-to-s3 {
+  name = "${local.project_name}_lambda_access_to_s3"
+  policy_arn = aws_iam_policy.lambda-access-to-s3.arn
+  roles = [aws_iam_role.lambda.name]
 }
 
 
