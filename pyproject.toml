@@ -5,14 +5,12 @@ description = "A talk for Barnaul Python Conf 2021."
 authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.9"
-geopatterns = {git = "git@github.com:bryanveloso/geopatterns.git"}
+python = ">=3.8,<3.9"
+geopatterns = {git = "https://github.com/bryanveloso/geopatterns.git"}
 CairoSVG = "^2.5.2"
-pydantic = "^1.8.1"
 typer = "^0.3.2"
 fastapi = "^0.63.0"
 mangum = "^0.11.0"
-flakehell = "^0.9.0"
 
 
 [tool.poetry.scripts]
@@ -23,12 +21,13 @@ geopatterns = "geopatterns_demo.cli:app"
 octadocs = "^0.0.35"
 wemake-python-styleguide = "^0.15.2"
 uvicorn = "^0.13.4"
-
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+flakehell = "^0.9.0"
+pip = "^21.0.1"
 
 
 [tool.flakehell]
 base = "https://raw.githubusercontent.com/Recall-Masters/standards/main/pyproject.toml"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
