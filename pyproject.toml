@@ -12,6 +12,8 @@ pydantic = "^1.8.1"
 typer = "^0.3.2"
 fastapi = "^0.63.0"
 mangum = "^0.11.0"
+flakehell = "^0.9.0"
+
 
 [tool.poetry.scripts]
 geopatterns = "geopatterns_demo.cli:app"
@@ -19,7 +21,14 @@ geopatterns = "geopatterns_demo.cli:app"
 
 [tool.poetry.dev-dependencies]
 octadocs = "^0.0.35"
+wemake-python-styleguide = "^0.15.2"
+uvicorn = "^0.13.4"
+
 
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+
+[tool.flakehell]
+base = "https://raw.githubusercontent.com/Recall-Masters/standards/main/pyproject.toml"

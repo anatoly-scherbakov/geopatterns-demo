@@ -3,6 +3,8 @@ TF_VERSION := 0.14.9
 PLATFORM := $(shell uname -s | tr A-Z a-z)
 ARCH := $(shell uname -m | sed 's/x86_64/amd64/' | sed -e 's/i[3,6]86/386/')
 
+DIR := geopatterns_demo
+
 # Name of Terraform executable file
 TF := terraform-$(TF_VERSION)
 
@@ -47,7 +49,7 @@ build:
 	mkdir -p build
 	rm -rf build/*
 	poetry export -f requirements.txt --without-hashes | pip install -r /dev/stdin -t build/
-	cp -rf geopatterns_demo build/
+	cp -rf ${DIR} build/
 
 
 .ONESHELL:
@@ -55,3 +57,18 @@ build:
 .PHONY: deploy
 deploy: build infrastructure
 	@echo "Deployment complete."
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: lint
+lint:
+	mypy ${DIR}
+	flakehell lint ${DIR}
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: serve
+serve:
+	python -m uvicorn ${DIR}.api:api
