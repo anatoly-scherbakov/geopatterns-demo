@@ -11,3 +11,4 @@ __pycache__
 
 # Lambda deployment archive files
 /build/
+/infrastructure/.terraform/build.zip

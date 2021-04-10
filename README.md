@@ -1,4 +1,4 @@
-# Introduction into Serverless Computing
+# geopatterns-demo
 ---
 
 - Barnaul Python Conf 
@@ -8,6 +8,6 @@ Supplementary materials (most importantly, source code) to illustrate basic idea
 
 ## Not covered by this project
 
-- Upload Lambda code package to S3 before submitting it to Lambda
+- Upload Lambda code package to S3 before submitting it to Lambda, for efficiency when having multiple Lambda functions from one codebase 
 - Manage multiple environments (dev, staging, production)
-- Store Terraform .tfstate file on S3 instead of on the disk
+- Store Terraform .tfstate file on S3 instead of local disk

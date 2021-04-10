@@ -1,10 +1,10 @@
 resource "aws_lambda_function" "lambda" {
   function_name = "${local.project_name}-api"
-  role          = aws_iam_role.lambda.name
+  role          = aws_iam_role.lambda.arn
 
   runtime          = "python3.8"
-  filename         = "../build.zip"
-  source_code_hash = filebase64sha256("../build.zip")
+  filename         = "${path.module}/.terraform/build.zip"
+  source_code_hash = data.archive_file.lambda_code.output_base64sha256
   handler          = "geopatterns_demo.api.app"
 
   timeout     = 900

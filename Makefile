@@ -10,7 +10,7 @@ TF := terraform-$(TF_VERSION)
 .ONESHELL:
 .SHELLFLAGS = -ce
 infrastructure/$(TF):
-	# Download Terraform executable file.
+	# Download Terraform executable file for the specified version.
 	curl -f https://releases.hashicorp.com/terraform/$(TF_VERSION)/terraform_$(TF_VERSION)_$(PLATFORM)_$(ARCH).zip -o /tmp/terraform.zip
 	unzip -p /tmp/terraform.zip terraform > ./infrastructure/$(TF)
 	rm -f /tmp/terraform.zip
@@ -21,9 +21,20 @@ infrastructure/$(TF):
 .SHELLFLAGS = -ce
 .PHONY: infrastructure
 infrastructure: ./infrastructure/$(TF)
+	# Deploy infrastructure to the cloud.
+	# Terraform will ask to confirm changes and you will have to answer `yes` to deploy. You can look in Terraform docs how to suppress questions.
 	cd infrastructure/
 	./$(TF) init
 	./$(TF) apply
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: plan
+plan: ./infrastructure/$(TF)
+	cd infrastructure/
+	./$(TF) init
+	./$(TF) plan
 
 
 .ONESHELL:
@@ -36,3 +47,10 @@ build:
 	mkdir -p build
 	rm -rf build/*
 	poetry export -f requirements.txt --without-hashes | pip install -r /dev/stdin -t build/
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: deploy
+deploy: build infrastructure
+	@echo "Deployment complete."
