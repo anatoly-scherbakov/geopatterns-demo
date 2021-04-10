@@ -1,3 +1,13 @@
-.idea/
+# PyCharm IDE files
+/.idea/
+
+# Cache
 __pycache__
 
+# Terraform temporary files
+/infrastructure/terraform-*
+/infrastructure/.terraform
+/infrastructure/.terraform.*
+
+# Lambda deployment archive files
+/build/

@@ -6,7 +6,7 @@ authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "3.9"
-geopatterns = {git = "git@github.com:anatoly-scherbakov/geopatterns.git"}
+geopatterns = {git = "git@github.com:bryanveloso/geopatterns.git"}
 CairoSVG = "^2.5.2"
 pydantic = "^1.8.1"
 typer = "^0.3.2"
