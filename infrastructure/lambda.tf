@@ -5,7 +5,7 @@ resource "aws_lambda_function" "lambda" {
   runtime          = "python3.8"
   filename         = "${path.module}/.terraform/build.zip"
   source_code_hash = data.archive_file.lambda_code.output_base64sha256
-  handler          = "geopatterns_demo.api.app"
+  handler          = "geopatterns_demo.api.lambda_handler"
 
   timeout     = 900
   memory_size = 512

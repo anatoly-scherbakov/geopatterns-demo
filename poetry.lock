@@ -292,6 +292,17 @@ htmlsoup = ["beautifulsoup4"]
 source = ["Cython (>=0.29.7)"]
 
 [[package]]
+name = "mangum"
+version = "0.11.0"
+description = "AWS Lambda & API Gateway support for ASGI"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+typing-extensions = "*"
+
+[[package]]
 name = "markdown"
 version = "3.3.4"
 description = "Python implementation of Markdown."
@@ -727,7 +738,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9"
-content-hash = "bdc74c7255c6cc47ed8a265773f3e2bfaa4ce86ff2e092863618a9e5abe54947"
+content-hash = "320c15b523a389225e72d17a256f785ec99c8c86dc492bc5795041b410457d37"
 
 [metadata.files]
 "backports.cached-property" = [
@@ -895,6 +906,10 @@ lxml = [
     {file = "lxml-4.6.3-cp39-cp39-win32.whl", hash = "sha256:33bb934a044cf32157c12bfcfbb6649807da20aa92c062ef51903415c704704f"},
     {file = "lxml-4.6.3-cp39-cp39-win_amd64.whl", hash = "sha256:542d454665a3e277f76954418124d67516c5f88e51a900365ed54a9806122b83"},
     {file = "lxml-4.6.3.tar.gz", hash = "sha256:39b78571b3b30645ac77b95f7c69d1bffc4cf8c3b157c435a34da72e78c82468"},
+]
+mangum = [
+    {file = "mangum-0.11.0-py3-none-any.whl", hash = "sha256:516309ba6d3d62c8fa8371d2779fc41e4f3dc1df91967e83e97db027e56dba1d"},
+    {file = "mangum-0.11.0.tar.gz", hash = "sha256:4b8e69030ba2182d4ce089620ee5c5b6075ae3cc5cedb00ab1d3db264231980e"},
 ]
 markdown = [
     {file = "Markdown-3.3.4-py3-none-any.whl", hash = "sha256:96c3ba1261de2f7547b46a00ea8463832c921d3f9d6aba3f255a6f71386db20c"},

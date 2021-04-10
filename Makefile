@@ -47,6 +47,7 @@ build:
 	mkdir -p build
 	rm -rf build/*
 	poetry export -f requirements.txt --without-hashes | pip install -r /dev/stdin -t build/
+	cp -rf geopatterns_demo build/
 
 
 .ONESHELL:
