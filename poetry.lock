@@ -644,6 +644,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "mkautodoc"
+version = "0.1.0"
+description = "AutoDoc for MarkDown"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "mkdocs"
 version = "1.1.2"
 description = "Project documentation with Markdown."
@@ -659,6 +667,19 @@ lunr = {version = "0.5.8", extras = ["languages"]}
 Markdown = ">=3.2.1"
 PyYAML = ">=3.10"
 tornado = ">=5.0"
+
+[[package]]
+name = "mkdocs-git-revision-date-plugin"
+version = "0.3.1"
+description = "MkDocs plugin for setting revision date from git per markdown file."
+category = "dev"
+optional = false
+python-versions = ">=3.4"
+
+[package.dependencies]
+GitPython = "*"
+jinja2 = "*"
+mkdocs = ">=0.17"
 
 [[package]]
 name = "mkdocs-macros-plugin"
@@ -704,6 +725,14 @@ python-versions = ">=3.5"
 
 [package.dependencies]
 mkdocs-material = ">=5.0.0"
+
+[[package]]
+name = "mkdocs-semantic"
+version = "1.0.0"
+description = "Semantic-UI Theme for MkDocs"
+category = "dev"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "nltk"
@@ -1209,7 +1238,7 @@ typing_extensions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.9"
-content-hash = "5dc72fd870e1d04558e883f3479a4047316def4ee4e1761b2e6f93f708854f0e"
+content-hash = "214936a295bc0a76cf7bc663db64bd03c37a37ee7f92dba7fb503ce24a30a109"
 
 [metadata.files]
 astor = [
@@ -1548,9 +1577,16 @@ mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
 ]
+mkautodoc = [
+    {file = "mkautodoc-0.1.0.tar.gz", hash = "sha256:7c2595f40276b356e576ce7e343338f8b4fa1e02ea904edf33fadf82b68ca67c"},
+]
 mkdocs = [
     {file = "mkdocs-1.1.2-py3-none-any.whl", hash = "sha256:096f52ff52c02c7e90332d2e53da862fde5c062086e1b5356a6e392d5d60f5e9"},
     {file = "mkdocs-1.1.2.tar.gz", hash = "sha256:f0b61e5402b99d7789efa032c7a74c90a20220a9c81749da06dbfbcbd52ffb39"},
+]
+mkdocs-git-revision-date-plugin = [
+    {file = "mkdocs-git-revision-date-plugin-0.3.1.tar.gz", hash = "sha256:4abaef720763a64c952bed6829dcc180f67c97c60dd73914e90715e05d1cfb23"},
+    {file = "mkdocs_git_revision_date_plugin-0.3.1-py3-none-any.whl", hash = "sha256:8ae50b45eb75d07b150a69726041860801615aae5f4adbd6b1cf4d51abaa03d5"},
 ]
 mkdocs-macros-plugin = [
     {file = "mkdocs-macros-plugin-0.5.5.tar.gz", hash = "sha256:e0302836397c787505a7b1666cb41b9f4b34d894f816f040e4d738839e76cc73"},
@@ -1563,6 +1599,10 @@ mkdocs-material = [
 mkdocs-material-extensions = [
     {file = "mkdocs-material-extensions-1.0.1.tar.gz", hash = "sha256:6947fb7f5e4291e3c61405bad3539d81e0b3cd62ae0d66ced018128af509c68f"},
     {file = "mkdocs_material_extensions-1.0.1-py3-none-any.whl", hash = "sha256:d90c807a88348aa6d1805657ec5c0b2d8d609c110e62b9dce4daf7fa981fa338"},
+]
+mkdocs-semantic = [
+    {file = "mkdocs-semantic-1.0.0.tar.gz", hash = "sha256:c2aabd19c92ffa5157116ae702318650694022966117312b7cc722e4cd3d488a"},
+    {file = "mkdocs_semantic-1.0.0-py3-none-any.whl", hash = "sha256:410709519bc7648e6101940567045d21dc0f9995b4603e3a873bd189a0804eaa"},
 ]
 nltk = [
     {file = "nltk-3.6.1-py3-none-any.whl", hash = "sha256:1235660f52ab10fda34d5277096724747f767b2903e1c0c4e14bde013552c9ba"},

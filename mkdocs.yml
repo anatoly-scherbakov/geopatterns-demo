@@ -1,0 +1,45 @@
+site_name: geopatterns-demo
+
+repo_url: https://github.com/anatoly-scherbakov/geopatterns-demo/
+repo_name: anatoly-scherbakov/geopatterns-demo
+edit_uri: edit/master/docs/
+
+copyright: Copyright &copy; 2021 Anatoly Scherbakov
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - mkautodoc
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - git-revision-date
+  - octadocs
+  - macros:
+      modules:
+        - octadocs.macros
+      include_dir: templates
+
+theme:
+  name: semantic
+  logo: geopatterns.png
+  custom_dir: templates
+  features:
+    - navigation.tabs
+    - header.autohide
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/vue@next
+  - javascripts/config.js
+  - javascripts/geopatterns-demo.js

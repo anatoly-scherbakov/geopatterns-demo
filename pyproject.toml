@@ -19,6 +19,10 @@ wemake-python-styleguide = "^0.15.2"
 uvicorn = "^0.13.4"
 flakehell = "^0.9.0"
 pip = "^21.0.1"
+mkdocs-semantic = "^1.0.0"
+mkdocs-git-revision-date-plugin = "^0.3.1"
+mkdocs-macros-plugin = "^0.5.5"
+mkautodoc = "^0.1.0"
 
 
 [tool.poetry.scripts]
