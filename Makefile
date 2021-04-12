@@ -22,7 +22,7 @@ infrastructure/$(TF):
 .ONESHELL:
 .SHELLFLAGS = -ce
 .PHONY: infrastructure
-infrastructure: ./infrastructure/$(TF)
+infrastructure: ./infrastructure/$(TF) layer/${DIR}_lambda_layer.zip
 	# Deploy infrastructure to the cloud.
 	# Terraform will ask to confirm changes and you will have to answer `yes` to deploy. You can look in Terraform docs how to suppress questions.
 	cd infrastructure/
@@ -72,3 +72,16 @@ lint:
 .PHONY: serve
 serve:
 	python -m uvicorn ${DIR}.api:api
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+layer/${DIR}_lambda_layer.zip: layer/Dockerfile
+	cd layer
+	docker build -t ${DIR} .
+
+	# Create an instance of the image (without actually running it)
+	# this is just so we can copy the zip file out
+	docker create --name ${DIR} ${DIR} echo
+	docker cp ${DIR}:/opt/${DIR}_lambda_layer.zip .
+	docker rm ${DIR}

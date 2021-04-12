@@ -1209,7 +1209,7 @@ typing_extensions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.9"
-content-hash = "350bc359ebbb3f4eac86c84a4e84dc89c4bc942ff5bb7625208060a08cefbc6b"
+content-hash = "5dc72fd870e1d04558e883f3479a4047316def4ee4e1761b2e6f93f708854f0e"
 
 [metadata.files]
 astor = [

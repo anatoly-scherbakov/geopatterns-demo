@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "serverless-computing-intro"
+name = "geopatterns-demo"
 version = "0.0.2"
-description = "A talk for Barnaul Python Conf 2021."
+description = "Demo for the geopatterns Python library."
 authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
 
 [tool.poetry.dependencies]
@@ -13,16 +13,16 @@ fastapi = "^0.63.0"
 mangum = "^0.11.0"
 
 
-[tool.poetry.scripts]
-geopatterns = "geopatterns_demo.cli:app"
-
-
 [tool.poetry.dev-dependencies]
 octadocs = "^0.0.35"
 wemake-python-styleguide = "^0.15.2"
 uvicorn = "^0.13.4"
 flakehell = "^0.9.0"
 pip = "^21.0.1"
+
+
+[tool.poetry.scripts]
+geopatterns = "geopatterns_demo.cli:app"
 
 
 [tool.flakehell]

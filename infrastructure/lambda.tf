@@ -12,4 +12,7 @@ resource "aws_lambda_function" "lambda" {
   reserved_concurrent_executions = 5
 
   description = "This Lambda function handles the API requests - both to create geopatterns images and to list images which were already created."
+
+  # Include the necessary binary libraries
+  layers = [aws_lambda_layer_version.libraries.arn]
 }
