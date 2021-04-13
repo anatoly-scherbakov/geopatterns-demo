@@ -19,7 +19,7 @@ title: geopatterns
 
     <div class="ui hidden divider"></div>
     
-    <div class="ui four cards">
+    <div class="ui four stackable cards">
         <preview-card :method="method" :text="display_text" v-for="method in methods">
         </preview-card>
     </div>
