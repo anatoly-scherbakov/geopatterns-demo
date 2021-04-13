@@ -5,24 +5,22 @@ function random_int(max) {
 const GeopatternsApp = {
     data() {
         return {
-            text: '',
-            methods: ['hexagons', 'xes', 'overlapping_circles', 'overlapping_rings', 'plaid', 'plus_signs', 'rings', 'sinewaves', 'squares', 'triangles', 'xes']
+            methods: [
+                'hexagons', 'xes', 'overlapping_circles', 'overlapping_rings',
+                'plaid', 'plus_signs', 'rings', 'sinewaves', 'squares',
+                'triangles', 'xes',
+            ],
+            input_text: '',
+            display_text: ''
         }
     },
 
     methods: {
         style_by_method(method) {
-            return 'background-image: url(https://dqrura49d0.execute-api.us-east-1.amazonaws.com/generate?text=' + this.text + '&method=' + method + ')';
+            return 'background-image: url(https://dqrura49d0.execute-api.us-east-1.amazonaws.com/generate?text=' + this.display_text + '&method=' + method + ')';
         },
-    },
-
-    computed: {
-        url() {
-            return 'https://dqrura49d0.execute-api.us-east-1.amazonaws.com/generate?text=' + this.text
-        },
-
-        style() {
-            return 'background-image: url(' + this.url + ')';
+        update_text() {
+            this.display_text = this.input_text;
         }
     }
 }
@@ -50,24 +48,26 @@ app.component('preview-card', {
     },
     methods: {
         update_background() {
-            this.style = this.style_string;
+            let self = this;
+            setTimeout(function () {
+                console.log('Updating: ' + self.method);
+                self.style = self.style_string;
+            }, 1000);
         },
         download_background_and_update() {
             let self = this;
+            console.log('downloading! ' + this.method);
             fetch(this.url).then(this.update_background).catch(function () {
-                setInterval(
-                    self.update_background.bind(self),
+                setTimeout(
+                    self.download_background_and_update.bind(self),
                     random_int(10000),
                 )
             });
         }
     },
     watch: {
-        text(old_text, new_text) {
-            setInterval(
-                this.download_background_and_update.bind(this),
-                random_int(5000),
-            );
+        text: function() {
+            this.download_background_and_update();
         }
     }
 });

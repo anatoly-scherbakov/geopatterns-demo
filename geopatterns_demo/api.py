@@ -22,6 +22,9 @@ def generate(
     return Response(
         content=image,
         media_type='image/png',
+        headers={
+            'Cache-Control': 'public, max-age=31536000',
+        },
     )
 
 
