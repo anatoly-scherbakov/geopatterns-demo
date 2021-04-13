@@ -1,21 +1,20 @@
 ---
-title: geopatterns-demo
+title: geopatterns
 ---
 
 <div id="app">
-    <h1 class="ui header">
-        Geopatterns demo
-    </h1>
     <div class="ui container">
-        <div class="ui large fluid action labeled input">
-          <div class="ui label">
-            Phrase: 
-          </div>
-          <input v-model="input_text" type="text" placeholder="">
-          <button class="ui green button" @click="update_text">
-            <i class="play alternate icon"></i>
-          </button>
-        </div>
+        <form class="ui form" @submit.prevent="update_text">    
+            <div class="ui large fluid action labeled input">
+              <div class="ui label">
+                Phrase: 
+              </div>
+              <input v-model="input_text" type="text" placeholder="Input something and hit Enter ☺">
+              <button type="submit" class="ui green button">
+                <i class="play alternate icon"></i>
+              </button>
+            </div>
+        </form>
     </div>
 
     <div class="ui hidden divider"></div>
