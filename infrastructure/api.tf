@@ -3,6 +3,9 @@ resource "aws_apigatewayv2_api" "api" {
   name = "${local.project_name}-api"
   protocol_type = "HTTP"
   target = aws_lambda_function.lambda.arn
+  cors_configuration {
+    allow_origins = ["*"]
+  }
 }
 
 

@@ -27,7 +27,7 @@ title: geopatterns-demo
 <style>
     .image {
         min-height: 128px;
-        background-repeat: no-repeat !important;
+        background-repeat: repeat !important;
         background-size: contain !important;
         background-position: center center;
     }
