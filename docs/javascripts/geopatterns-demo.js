@@ -57,10 +57,20 @@ app.component('preview-card', {
         download_background_and_update() {
             let self = this;
             console.log('downloading! ' + this.method);
-            fetch(this.url).then(this.update_background).catch(function () {
+            fetch(this.url).then(function(response) {
+                if (response.ok) {
+                    self.update_background();
+                } else {
+                    console.log(self.method, 'Got an HTTP error, will retry');
+                    setTimeout(
+                        self.download_background_and_update.bind(self),
+                        random_int(1000),
+                    );
+                }
+            }).catch(function () {
                 setTimeout(
                     self.download_background_and_update.bind(self),
-                    random_int(10000),
+                    random_int(1000),
                 )
             });
         }
