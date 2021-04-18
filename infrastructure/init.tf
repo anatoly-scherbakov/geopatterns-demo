@@ -6,10 +6,10 @@ locals {
 
 
 terraform {
-  backend s3 {
+  backend "s3" {
     region  = "us-east-1"
     encrypt = true
-    bucket = "geopatterns-demo-terraform-state"
-    key = "geopatterns-demo.tfstate"
+    bucket  = "geopatterns-demo-terraform-state"
+    key     = "geopatterns-demo.tfstate"
   }
 }
