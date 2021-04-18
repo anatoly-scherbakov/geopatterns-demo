@@ -63,15 +63,29 @@ deploy: build infrastructure
 .SHELLFLAGS = -ce
 .PHONY: lint
 lint:
-	mypy ${DIR}
+	mypy --ignore-missing-imports ${DIR}
 	flakehell lint ${DIR}
 
 
 .ONESHELL:
 .SHELLFLAGS = -ce
-.PHONY: serve
+.PHONY: format
+format:
+	isort ${DIR}
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: serve_api
+serve_api:
+	python -m uvicorn --port 8080 ${DIR}.api:api
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: serve_api
 serve:
-	python -m uvicorn ${DIR}.api:api
+	mkdocs serve -a localhost:8081
 
 
 .ONESHELL:

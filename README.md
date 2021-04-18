@@ -11,3 +11,4 @@ Supplementary materials (most importantly, source code) to illustrate basic idea
 - Upload Lambda code package to S3 before submitting it to Lambda, for efficiency when having multiple Lambda functions from one codebase 
 - Manage multiple environments (dev, staging, production)
 - Store Terraform .tfstate file on S3 instead of local disk
+- CI/CD pipeline

@@ -33,6 +33,8 @@ theme:
   name: semantic
   logo: geopatterns.png
   custom_dir: templates
+  sidebar: false
+  search: false
   features:
     - navigation.tabs
     - header.autohide
