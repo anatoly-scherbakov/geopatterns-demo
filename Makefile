@@ -29,6 +29,7 @@ infrastructure/$(TF):
 infrastructure: ./infrastructure/$(TF) layer/${DIR}_lambda_layer.zip
 	# Deploy infrastructure to the cloud.
 	# Terraform will ask to confirm changes and you will have to answer `yes` to deploy. You can look in Terraform docs how to suppress questions.
+	echo TF_AUTO_APPROVE = $(TF_AUTO_APPROVE)
 	cd infrastructure/
 	./$(TF) init
 	./$(TF) apply $(tf_flags)
