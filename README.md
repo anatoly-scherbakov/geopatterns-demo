@@ -1,14 +1,18 @@
 # geopatterns-demo
----
 
-- Barnaul Python Conf 
+[![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
+![AWS](https://github.com/anatoly-scherbakov/geopatterns-demo/actions/workflows/deploy.yml/badge.svg)
+![License](https://badgen.net/github/license/anatoly-scherbakov/geopatterns-demo)
+
+- Barnaul Python Conf
 - 22 Apr 2021
 
-Supplementary materials (most importantly, source code) to illustrate basic ideas of Serverless computing with Amazon Web Services.
+An illustration for basic ideas of Serverless computing.
 
-## Not covered by this project
+## Keywords
 
-- Upload Lambda code package to S3 before submitting it to Lambda, for efficiency when having multiple Lambda functions from one codebase 
-- Manage multiple environments (dev, staging, production)
-- Store Terraform .tfstate file on S3 instead of local disk
-- CI/CD pipeline
+- AWS Lambda
+- AWS API Gateway
+- Terraform
+
+
