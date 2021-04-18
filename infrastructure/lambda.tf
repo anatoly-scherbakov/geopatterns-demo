@@ -7,7 +7,7 @@ resource "aws_lambda_function" "lambda" {
   source_code_hash = data.archive_file.lambda_code.output_base64sha256
   handler          = "geopatterns_demo.api.lambda_handler"
 
-  timeout                        = 3
+  timeout                        = 15
   memory_size                    = 128
   reserved_concurrent_executions = 5
 

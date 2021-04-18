@@ -14,5 +14,3 @@ An illustration for basic ideas of Serverless computing.
 - AWS Lambda
 - AWS API Gateway
 - Terraform
-
-
