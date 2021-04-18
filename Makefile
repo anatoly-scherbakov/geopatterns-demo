@@ -101,3 +101,10 @@ layer/${DIR}_lambda_layer.zip: layer/Dockerfile
 	docker create --name ${DIR} ${DIR} echo
 	docker cp ${DIR}:/opt/${DIR}_lambda_layer.zip .
 	docker rm ${DIR}
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: test
+test: lint
+	echo "Testing complete."

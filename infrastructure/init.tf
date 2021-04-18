@@ -9,6 +9,8 @@ terraform {
   backend "s3" {
     region  = "us-east-1"
     encrypt = true
+
+    # see tfstate.tf. We cannot use references here.
     bucket  = "geopatterns-demo-terraform-state"
     key     = "geopatterns-demo.tfstate"
   }
