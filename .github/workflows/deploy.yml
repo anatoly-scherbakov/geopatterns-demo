@@ -6,7 +6,8 @@ on:
       - master
 
 jobs:
-  test:
+  deploy:
+    environment: production
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +36,7 @@ jobs:
         poetry config virtualenvs.in-project true
         poetry install
 
-    - name: Run checks
+    - name: Deploy to AWS
       run: |
         source "$HOME/.poetry/env"
         export PATH="$(pwd)/.venv/bin:$PATH"
