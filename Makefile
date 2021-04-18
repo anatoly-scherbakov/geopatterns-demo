@@ -72,6 +72,8 @@ lint:
 .PHONY: format
 format:
 	isort ${DIR}
+	cd infrastructure
+	./$(TF) fmt
 
 
 .ONESHELL:

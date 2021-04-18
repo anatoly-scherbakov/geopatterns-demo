@@ -3,3 +3,13 @@ locals {
   # deploy this project. Otherwise, your S3 bucket will clash with mine.
   project_name = "geopatterns-demo"
 }
+
+
+terraform {
+  backend s3 {
+    region  = "us-east-1"
+    encrypt = true
+    bucket = "geopatterns-demo-terraform-state"
+    key = "geopatterns-demo.tfstate"
+  }
+}
