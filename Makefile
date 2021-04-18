@@ -8,6 +8,10 @@ DIR := geopatterns_demo
 # Name of Terraform executable file
 TF := terraform-$(TF_VERSION)
 
+ifeq ($(TF_AUTO_APPROVE), true)
+tf_flags := -auto-approve
+endif
+
 
 .ONESHELL:
 .SHELLFLAGS = -ce
@@ -27,7 +31,7 @@ infrastructure: ./infrastructure/$(TF) layer/${DIR}_lambda_layer.zip
 	# Terraform will ask to confirm changes and you will have to answer `yes` to deploy. You can look in Terraform docs how to suppress questions.
 	cd infrastructure/
 	./$(TF) init
-	./$(TF) apply
+	./$(TF) apply $(tf_flags)
 
 
 .ONESHELL:
