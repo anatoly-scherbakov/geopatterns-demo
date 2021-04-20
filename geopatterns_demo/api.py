@@ -3,6 +3,7 @@ import sentry_sdk
 from fastapi.responses import Response
 from mangum import Mangum
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
+from starlette.middleware.cors import CORSMiddleware
 
 from geopatterns_demo import settings
 from geopatterns_demo.draw import geopattern
@@ -15,6 +16,14 @@ if settings.IS_IN_LAMBDA:
     )
 
 api = fastapi.FastAPI()
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=False,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 
 
 @api.get('/generate', response_class=Response)
