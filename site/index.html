@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link
+            rel="shortcut icon"
+            href="./img/favicon.ico"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+
+    <title>geopatterns-demo</title>
+</head>
+<body>
+<div class="pusher">
+    <div id="content" class="ui container">
+        <!-- content -->
+
+        <div id="app">
+            <div class="ui container">
+                <form class="ui form" @submit.prevent="update_text">
+                    <div class="ui large fluid action labeled input">
+                        <div class="ui label">
+                            Phrase:
+                        </div>
+                        <input v-model="input_text" type="text"
+                               placeholder="Input something and hit Enter ☺">
+                        <button type="submit" class="ui green button">
+                            <i class="play alternate icon"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="ui hidden divider"></div>
+
+            <div class="ui four stackable cards">
+                <preview-card :method="method" :text="display_text"
+                              v-for="method in methods">
+                </preview-card>
+            </div>
+
+        </div>
+
+        <style>
+            .image {
+                min-height: 128px;
+                background-repeat: repeat !important;
+                background-size: contain !important;
+                background-position: center center;
+            }
+        </style>
+
+        <!-- ./content -->
+    </div>
+</div>
+
+
+<!-- search-modal -->
+<div
+        class="ui longer modal"
+        id="mkdocs_search_modal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="Search Modal"
+        aria-hidden="false"
+>
+    <i class="close icon"></i>
+    <div class="ui center aligned icon header">
+        <i class="circular search icon"></i>
+        <h2>geopatterns-demo - Search</h2>
+        From here you can search the entire site by typing in the form below.
+    </div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <input
+                        type="text"
+                        name="q"
+                        placeholder="Search..."
+                        id="mkdocs-search-query"
+                />
+            </div>
+        </form>
+    </div>
+    <div id="mkdocs-search-results" class="scrolling content"></div>
+</div>
+<!-- ./search-modal -->
+
+
+<footer>
+    <!-- attributions -->
+    <div id="footer-attribution" class="ui container">
+        <h4 class="ui horizontal divider header">
+            <div class="icons">
+                Made with <i class="fitted violet heart icon"></i> using
+                <a
+                        class="ui tiny violet header"
+                        href="https://www.mkdocs.org/"
+                        target="_blank"
+                >
+                    MkDocs
+                </a>
+                &
+                <a href="https://www.python.org/" target="_blank">
+                    <i class="fitted link violet python icon"></i>
+                </a>
+            </div>
+        </h4>
+    </div>
+    <!-- ./attributions -->
+
+    <!-- css-footer -->
+    <!-- ./css-footer -->
+    <!-- js-footer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/geopatterns-demo.js"></script>
+</footer>
+</body>
+</html>
