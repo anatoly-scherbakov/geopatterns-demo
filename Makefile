@@ -113,3 +113,13 @@ layer/${DIR}_lambda_layer.zip: layer/Dockerfile
 .PHONY: test
 test: lint
 	echo "Testing complete."
+
+
+.ONESHELL:
+.SHELLFLAGS = -ce
+.PHONY: logo
+logo:
+	cd site/images/
+	# montage background.png -mode Concatenate -tile 5x1 header.png
+	convert -size 4096x600 tile:background.png header.png
+	convert -pointsize 200 -fill white -draw 'text 200,320 "geopatterns"' header.png logo.png
