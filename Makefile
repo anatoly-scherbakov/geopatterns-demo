@@ -92,7 +92,8 @@ serve_api:
 .SHELLFLAGS = -ce
 .PHONY: serve_api
 serve:
-	mkdocs serve -a localhost:8081
+	cd site
+	python -m http.server 9010
 
 
 .ONESHELL:
