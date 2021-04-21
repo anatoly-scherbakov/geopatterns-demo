@@ -17,14 +17,13 @@ if settings.IS_IN_LAMBDA:
 
 api = fastapi.FastAPI()
 
-if settings.IS_IN_LAMBDA:
-    api.add_middleware(
-        CORSMiddleware,
-        allow_origins='*',
-        allow_credentials=False,
-        allow_methods=['*'],
-        allow_headers=['*'],
-    )
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=False,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 
 
 @api.get('/generate', response_class=Response)

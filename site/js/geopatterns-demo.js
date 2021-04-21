@@ -17,7 +17,7 @@ const GeopatternsApp = {
                 'plaid', 'plus_signs', 'rings', 'sinewaves', 'squares',
                 'triangles', 'xes',
             ],
-            text: 'boo',
+            text: 'Type something ☺',
             method: 'hexagons',
             style: ''
         }
@@ -37,16 +37,22 @@ const GeopatternsApp = {
     methods: {
         update_background() {
             let self = this;
+            console.log('update_background()')
             setTimeout(function () {
                 self.style = self.style_string;
+                console.log(':=');
             }, 1000);
         },
         download_background_and_update() {
             let self = this;
             fetch(this.url).then(function(response) {
                 if (response.ok) {
-                    self.update_background();
+                    console.log('ok', response)
+                    response.body.getReader().read().then(
+                        self.update_background.bind(self)
+                    );
                 } else {
+                    console.log('error: ', response);
                     setTimeout(
                         self.download_background_and_update.bind(self),
                         random_int(1000),
@@ -73,4 +79,4 @@ const GeopatternsApp = {
 
 const app = Vue.createApp(GeopatternsApp)
 
-app.mount('body');
+app.mount('#app');
