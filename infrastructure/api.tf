@@ -5,6 +5,7 @@ resource "aws_apigatewayv2_api" "api" {
   target        = aws_lambda_function.lambda.arn
   cors_configuration {
     allow_origins = ["*"]
+    allow_methods = ["GET"]
   }
 }
 
