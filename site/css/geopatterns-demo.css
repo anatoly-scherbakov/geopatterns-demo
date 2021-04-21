@@ -12,9 +12,14 @@
 #input {
     background: transparent;
     border: none;
-    font-size: 5rem;
+    font-size: 6rem;
     color: white;
     text-wrap: normal;
     text-align: center;
     margin-top: 20%;
+}
+
+
+#input::selection {
+    color: white;
 }

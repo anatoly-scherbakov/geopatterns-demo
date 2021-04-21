@@ -9,7 +9,7 @@
 
 This is a demo for the excellent [geopatterns](https://github.com/bryanveloso/geopatterns) library, and also an illustration for basic ideas of Serverless computing.
 
-See the [live demo](https://anatoly-scherbakov.github.io/geopatterns-demo/site/)!
+See the [live demo](https://anatoly-scherbakov.github.io/geopatterns-demo/site/)! Use Up and Down arrows on your keyboard to switch between patterns.
 
 ## Keywords
 
