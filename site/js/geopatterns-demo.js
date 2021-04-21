@@ -29,45 +29,50 @@ const GeopatternsApp = {
                 method: this.method,
             });
             return `${API_URL}?${params.toString()}`;
-        },
-        style_string() {
-            return 'background-image: url(' + this.url + ')';
         }
     },
     methods: {
-        update_background() {
-            let self = this;
-            console.log('update_background()')
-            setTimeout(function () {
-                self.style = self.style_string;
-                console.log(':=');
-            }, 1000);
-        },
         download_background_and_update() {
             let self = this;
-            fetch(this.url).then(function(response) {
-                if (response.ok) {
-                    console.log('ok', response)
-                    response.body.getReader().read().then(
-                        self.update_background.bind(self)
-                    );
-                } else {
-                    console.log('error: ', response);
+            fetch(
+                this.url,
+            ).catch(
+                response => {
+                    // Retry a bit later!
                     setTimeout(
                         self.download_background_and_update.bind(self),
                         random_int(1000),
                     );
+                },
+            ).then(
+                response => {
+                    if (response.ok) {
+                        return response.blob();
+                    }
+
+                    setTimeout(
+                        self.download_background_and_update.bind(self),
+                        random_int(1000),
+                    );
+                    return null;
+                },
+            ).then(
+                blob => {
+                    if (!blob) {
+                        return;
+                    }
+
+                    let reader = new FileReader();
+                    reader.onload = function () {
+                        self.style = `background-image: url(${this.result})`;
+                    }
+                    reader.readAsDataURL(blob);
                 }
-            }).catch(function () {
-                setTimeout(
-                    self.download_background_and_update.bind(self),
-                    random_int(1000),
-                )
-            });
+            );
         }
     },
     watch: {
-        text: function() {
+        text: function () {
             this.download_background_and_update();
         }
     },
