@@ -38,7 +38,7 @@ infrastructure: ./infrastructure/$(TF) layer/${DIR}_lambda_layer.zip
 .ONESHELL:
 .SHELLFLAGS = -ce
 .PHONY: plan
-plan: ./infrastructure/$(TF)
+plan: build ./infrastructure/$(TF)
 	cd infrastructure/
 	./$(TF) init
 	./$(TF) plan
