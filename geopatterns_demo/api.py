@@ -8,6 +8,7 @@ from starlette.middleware.cors import CORSMiddleware
 from geopatterns_demo import settings
 from geopatterns_demo.draw import geopattern
 from geopatterns_demo.models import Method
+from geopatterns_demo.methods_list import list_creator
 
 if settings.IS_IN_LAMBDA:
     sentry_sdk.init(
@@ -43,6 +44,11 @@ def generate(
             'Cache-Control': 'public, max-age=31536000',
         },
     )
+
+@api.get('/methods')
+def methods():
+    """Generate and return list of the methods geopatterns supports."""
+    return list_creator()
 
 
 lambda_handler = Mangum(api)
