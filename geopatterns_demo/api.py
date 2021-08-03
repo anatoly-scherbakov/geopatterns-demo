@@ -7,8 +7,8 @@ from starlette.middleware.cors import CORSMiddleware
 
 from geopatterns_demo import settings
 from geopatterns_demo.draw import geopattern
-from geopatterns_demo.models import Method
 from geopatterns_demo.methods_list import describe_available_methods
+from geopatterns_demo.models import Method
 
 if settings.IS_IN_LAMBDA:
     sentry_sdk.init(
@@ -44,6 +44,7 @@ def generate(
             'Cache-Control': 'public, max-age=31536000',
         },
     )
+
 
 @api.get('/methods')
 def methods():
