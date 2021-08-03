@@ -25,6 +25,7 @@ mkdocs-git-revision-date-plugin = "^0.3.1"
 mkdocs-macros-plugin = "^0.5.5"
 mkautodoc = "^0.1.0"
 mypy = "^0.812"
+flake8 = "<3.9.1"
 
 [tool.poetry.scripts]
 geopatterns = "geopatterns_demo.cli:app"
