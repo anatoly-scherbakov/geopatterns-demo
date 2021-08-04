@@ -8,9 +8,8 @@ from pydantic import BaseModel
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from starlette.middleware.cors import CORSMiddleware
 
-from geopatterns_demo import settings
+from geopatterns_demo import methods_list, random_phrase, settings
 from geopatterns_demo.draw import geopattern
-from geopatterns_demo.methods_list import describe_available_methods
 from geopatterns_demo.models import Method
 
 if settings.IS_IN_LAMBDA:
@@ -65,7 +64,25 @@ class MethodDescription(BaseModel):
 )
 def methods():
     """Generate and return list of the methods geopatterns supports."""
-    return describe_available_methods()
+    return methods_list.describe_available_methods()
+
+
+class RendomPhraseDescription(BaseModel):
+    """Class declares the model used for the response.
+
+    Model used for the response in the /random-phrase API endpoint.
+    """
+
+    text: str
+
+
+@api.get(
+    '/random-phrase',
+    response_model=RendomPhraseDescription,
+)
+def phrase():
+    """Generate and return return random phrase."""
+    return random_phrase.make_random_text()
 
 
 lambda_handler = Mangum(api)
