@@ -1,7 +1,10 @@
+import typing
+
 import fastapi
 import sentry_sdk
 from fastapi.responses import Response
 from mangum import Mangum
+from pydantic import BaseModel
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from starlette.middleware.cors import CORSMiddleware
 
@@ -46,7 +49,20 @@ def generate(
     )
 
 
-@api.get('/methods')
+class MethodDescription(BaseModel):
+    """Class declares the model used for the response.
+
+    Model used for the response in the /methods API endpoint.
+    """
+
+    name: str
+    label: Method
+
+
+@api.get(
+    '/methods',
+    response_model=typing.List[MethodDescription],
+)
 def methods():
     """Generate and return list of the methods geopatterns supports."""
     return describe_available_methods()
