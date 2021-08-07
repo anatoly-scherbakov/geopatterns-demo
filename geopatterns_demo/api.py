@@ -64,4 +64,4 @@ def phrase():
     return {'text': random_phrase.make_random_text()}
 
 
-lambda_handler = Mangum(ap'')
+lambda_handler = Mangum(api)
