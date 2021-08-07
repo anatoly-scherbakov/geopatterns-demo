@@ -117,8 +117,3 @@ const GeopatternsApp = {
 const app = Vue.createApp(GeopatternsApp)
 
 app.mount('#app');
-
-$.getJSON(TEXT_URL, function(data) {
-      var text = `${data.text}<br>`
-      $("#input").val(text);
-});
