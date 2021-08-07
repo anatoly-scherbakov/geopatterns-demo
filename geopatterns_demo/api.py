@@ -4,13 +4,11 @@ import fastapi
 import sentry_sdk
 from fastapi.responses import Response
 from mangum import Mangum
-from pydantic import BaseModel
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from starlette.middleware.cors import CORSMiddleware
 
-from geopatterns_demo import methods_list, random_phrase, settings
+from geopatterns_demo import methods_list, models, random_phrase, settings
 from geopatterns_demo.draw import geopattern
-from geopatterns_demo.models import Method
 
 if settings.IS_IN_LAMBDA:
     sentry_sdk.init(
@@ -32,7 +30,7 @@ api.add_middleware(
 @api.get('/generate', response_class=Response)
 def generate(
     text: str = fastapi.Query(..., max_length=1024),
-    method: Method = Method.HEXAGONS,
+    method: models.Method = models.Method.HEXAGONS,
 ):
     """Generate and return a GeoPattern for rendering."""
     image = geopattern(
@@ -48,41 +46,22 @@ def generate(
     )
 
 
-class MethodDescription(BaseModel):
-    """Class declares the model used for the response.
-
-    Model used for the response in the /methods API endpoint.
-    """
-
-    name: str
-    label: Method
-
-
 @api.get(
     '/methods',
-    response_model=typing.List[MethodDescription],
+    response_model=typing.List[models.MethodDescription],
 )
 def methods():
     """Generate and return list of the methods geopatterns supports."""
     return methods_list.describe_available_methods()
 
 
-class RendomPhraseDescription(BaseModel):
-    """Class declares the model used for the response.
-
-    Model used for the response in the /random-phrase API endpoint.
-    """
-
-    text: str
-
-
 @api.get(
     '/random-phrase',
-    response_model=RendomPhraseDescription,
+    response_model=models.PhraseDescription,
 )
 def phrase():
     """Generate and return return random phrase."""
-    return random_phrase.make_random_text()
+    return {'text': random_phrase.make_random_text()}
 
 
 lambda_handler = Mangum(api)
