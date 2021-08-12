@@ -1,3 +1,5 @@
+import typing
+
 import fastapi
 import sentry_sdk
 from fastapi.responses import Response
@@ -5,10 +7,8 @@ from mangum import Mangum
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from starlette.middleware.cors import CORSMiddleware
 
-from geopatterns_demo import settings
+from geopatterns_demo import methods_list, models, random_phrase, settings
 from geopatterns_demo.draw import geopattern
-from geopatterns_demo.methods_list import describe_available_methods
-from geopatterns_demo.models import Method
 
 if settings.IS_IN_LAMBDA:
     sentry_sdk.init(
@@ -30,7 +30,7 @@ api.add_middleware(
 @api.get('/generate', response_class=Response)
 def generate(
     text: str = fastapi.Query(..., max_length=1024),
-    method: Method = Method.HEXAGONS,
+    method: models.Method = models.Method.HEXAGONS,
 ):
     """Generate and return a GeoPattern for rendering."""
     image = geopattern(
@@ -46,10 +46,22 @@ def generate(
     )
 
 
-@api.get('/methods')
+@api.get(
+    '/methods',
+    response_model=typing.List[models.MethodDescription],
+)
 def methods():
     """Generate and return list of the methods geopatterns supports."""
-    return describe_available_methods()
+    return methods_list.describe_available_methods()
+
+
+@api.get(
+    '/random-phrase',
+    response_model=models.PhraseDescription,
+)
+def phrase():
+    """Generate and return return random phrase."""
+    return {'text': random_phrase.make_random_text()}
 
 
 lambda_handler = Mangum(api)
