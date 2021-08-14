@@ -3,7 +3,7 @@
 
 // API handled by AWS Lambda
 const API_URL = 'https://dqrura49d0.execute-api.us-east-1.amazonaws.com/generate';
-const RANDOM_TEXT_URL = 'https://fish-text.ru/get?format=json&number=1';
+const RANDOM_TEXT_URL = 'https://dqrura49d0.execute-api.us-east-1.amazonaws.com/random-phrase';
 
 
 function random_int(max) {
