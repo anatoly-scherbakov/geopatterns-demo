@@ -35,3 +35,10 @@ class PhraseDescription(BaseModel):
     """
 
     text: str
+
+
+class Thesaurus(Enum):
+    """List of dictionaries with words."""
+
+    ADJECTIVES = 'geopatterns_demo/dictionary/adjectives.txt'
+    NOUNS = 'geopatterns_demo/dictionary/nouns.txt'
