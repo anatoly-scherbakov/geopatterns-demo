@@ -61,7 +61,7 @@ def methods():
 )
 def phrase():
     """Generate and return return random phrase."""
-    return {'text': random_phrase.make_random_text()}
+    return models.PhraseDescription(text=random_phrase.make_random_text())
 
 
 lambda_handler = Mangum(api)
