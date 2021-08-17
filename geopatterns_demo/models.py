@@ -1,4 +1,5 @@
 from enum import Enum
+from pathlib import Path
 
 from pydantic import BaseModel
 
@@ -38,7 +39,10 @@ class PhraseDescription(BaseModel):
 
 
 class Thesaurus(Enum):
-    """List of dictionaries with words."""
+    """List of dictionaries with words.
 
-    ADJECTIVES = 'geopatterns_demo/dictionary/adjectives.txt'
-    NOUNS = 'geopatterns_demo/dictionary/nouns.txt'
+    The order of variables determines the order of words in the outgoing phrase.
+    """
+
+    ADJECTIVES = Path(__file__).parent / 'dictionary/adjectives.txt'
+    NOUNS = Path(__file__).parent / 'dictionary/nouns.txt'
