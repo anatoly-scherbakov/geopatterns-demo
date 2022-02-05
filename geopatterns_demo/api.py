@@ -65,7 +65,7 @@ def phrase():
     return models.PhraseDescription(text=random_phrase.make_random_text())
 
 
-@api.get('/share',response_model=models.FileURL)
+@api.get('/share', response_model=models.FileURL)
 def share(
     text: str = fastapi.Query(..., max_length=1024),
     method: models.Method = models.Method.HEXAGONS,
