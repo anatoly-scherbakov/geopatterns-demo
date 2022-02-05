@@ -5,3 +5,7 @@ SENTRY_DSN = (
 )
 
 IS_IN_LAMBDA = os.environ.get('AWS_EXECUTION_ENV') is not None
+
+S3_BUCKET_NAME = 'geopatterns-demo-images'
+
+AWS_REGION = 'us-east-1'

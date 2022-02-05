@@ -9,6 +9,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from geopatterns_demo import methods_list, models, random_phrase, settings
 from geopatterns_demo.draw import geopattern
+from geopatterns_demo.file_handler import get_url
 
 if settings.IS_IN_LAMBDA:
     sentry_sdk.init(
@@ -60,8 +61,17 @@ def methods():
     response_model=models.PhraseDescription,
 )
 def phrase():
-    """Generate and return return random phrase."""
+    """Generate and return random phrase."""
     return models.PhraseDescription(text=random_phrase.make_random_text())
+
+
+@api.get('/share', response_model=models.FileURL)
+def share(
+    text: str = fastapi.Query(..., max_length=1024),
+    method: models.Method = models.Method.HEXAGONS,
+):
+    """Save the GeoPattern file to S3 and returns it's url."""
+    return get_url(text, method)
 
 
 lambda_handler = Mangum(api)

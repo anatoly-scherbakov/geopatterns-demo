@@ -46,3 +46,12 @@ class Thesaurus(Enum):
 
     ADJECTIVES = Path(__file__).parent / 'dictionary/adjectives.txt'
     NOUNS = Path(__file__).parent / 'dictionary/nouns.txt'
+
+
+class FileURL(BaseModel):
+    """Class declares the model used for the response.
+
+    Model used for the response in the /share API endpoint.
+    """
+
+    url: str
